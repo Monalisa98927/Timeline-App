@@ -23,7 +23,7 @@ public class usersController {
             Connection conn = null;
             Statement stmt = null;
             try{
-                Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection(MySQLConnector.DB_URL,MySQLConnector.USER,MySQLConnector.PASS);
                 stmt = conn.createStatement();
                 String sql2;
@@ -60,7 +60,7 @@ public class usersController {
         Connection conn = null;
         Statement stmt = null;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(MySQLConnector.DB_URL,MySQLConnector.USER,MySQLConnector.PASS);
             stmt = conn.createStatement();
 
@@ -104,7 +104,7 @@ public class usersController {
         Connection conn = null;
         Statement stmt = null;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(MySQLConnector.DB_URL,MySQLConnector.USER,MySQLConnector.PASS);
             stmt = conn.createStatement();
 

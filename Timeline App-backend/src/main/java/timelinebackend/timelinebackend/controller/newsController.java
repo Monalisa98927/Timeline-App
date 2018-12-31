@@ -47,7 +47,7 @@ public class newsController {
         list0 = new ArrayList<news>();
 
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(MySQLConnector.DB_URL,MySQLConnector.USER,MySQLConnector.PASS);
             stmt = conn.createStatement();
 
@@ -121,22 +121,9 @@ public class newsController {
         Connection conn = null;
         Statement stmt = null;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(MySQLConnector.DB_URL,MySQLConnector.USER,MySQLConnector.PASS);
             stmt = conn.createStatement();
-
-            String sql5;
-            sql5 = "select num from count limit 1";
-            ResultSet rs5 = stmt.executeQuery(sql5);
-
-            int id = 0;
-            if(rs5.next()){
-                id = rs5.getInt("num") + 1;
-                String sql7 = "delete from count";
-                stmt.execute(sql7);
-                String sql8 = "insert into count values ('"+id+"')";
-                stmt.execute(sql8);
-            }
 
             String content = news.get("content").toString();
 
@@ -155,7 +142,7 @@ public class newsController {
             String dateString = format.format(time);
 
             String sql6;
-            sql6 = "insert into news values ('"+id+"','"+content+"','"+imageURL+"','"+author+"','"+dateString+"')";
+            sql6 = "insert into news(content,imageURL,author,time) values ('"+content+"','"+imageURL+"','"+author+"','"+dateString+"')";
             stmt.execute(sql6);
             stmt.close();
             conn.close();
