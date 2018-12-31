@@ -130,9 +130,10 @@ var newsService = /** @class */ (function () {
     };
     newsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
     ], newsService);
     return newsService;
+    var _a;
 }());
 
 //# sourceMappingURL=newsService.js.map
@@ -187,9 +188,10 @@ var usersService = /** @class */ (function () {
     };
     usersService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
     ], usersService);
     return usersService;
+    var _a;
 }());
 
 //# sourceMappingURL=usersService.js.map
@@ -415,12 +417,10 @@ var HomePage = /** @class */ (function () {
             selector: 'page-home',template:/*ion-inline-start:"C:\Users\lenovo\Desktop\Timeline App\Timeline App-frontend\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>首页</ion-title>\n    <button style="background-color: #f8f8f8;\n    font-weight: bolder;\n    color: #488aff;\n    font-size: 3.0rem;\n    " (click)="openAddNewsPage()">\n    <ion-icon name="add-circle"></ion-icon>\n  </button>\n  </ion-navbar>\n  \n</ion-header>\n\n<ion-content padding class="tutorial-page">\n  \n  <ion-refresher \n        (ionRefresh)="doRefresh($event)">\n        <ion-refresher-content style="margin-top:0px;"\n          pullingIcon="arrow-dropdown"\n          pullingText="下拉刷新"\n          refreshingSpinner="circles"\n          refreshingText="正在刷新...">\n        </ion-refresher-content>\n      </ion-refresher>\n\n  <ion-slides pager loop="true" \n                    autoplay="1500" \n                    style="margin-top: 0px;  max-height: 300px;">\n    <ion-slide *ngFor="let slide of mySlide">\n      <img [src]="slide.image" class="slide-image"/>\n    </ion-slide>\n  </ion-slides>\n\n    <div>\n  \n      <ion-list>\n          <ion-list-header style="font-size:15px;">全  部  分  享</ion-list-header>    \n\n          <ion-item *ngFor="let news of myNews">\n\n              <h2 style="font-size:1.9rem; color:black; font-weight:bolder;">{{news.author}}</h2>\n              <h2 style="font-size:1.4rem; color:grey; font-weight:light;">{{news.time}}</h2>\n          \n              <ion-scroll style="margin-left: -13px;\n                                  margin-right: -19px;\n                                  padding:0px; \n                                  white-space:normal; \n                                  min-width:100%; \n                                  margin-top:10px;\n                                  height:85px; \n                                  margin-bottom:10px; \n                                  color:#000000c2;" scrollX="true" scrollY="true">\n                {{news.content}}\n              </ion-scroll>\n \n              <img *ngIf="news.imageURL!=\'\'" style="width: 100%; height: 100%" [src]="news.imageURL">\n\n            <ion-row>\n              <ion-col>\n                <button ion-button icon-start clear small>\n                  <ion-icon style="color:red;" name="heart"></ion-icon>\n                  <div style="color:black;">Like</div>\n                </button>\n              </ion-col>\n            </ion-row>\n              \n            </ion-item>\n            \n      </ion-list>\n\n      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n        <ion-infinite-scroll-content\n        style="font-size: 18px;"\n        loadingSpinner="bubbles"\n        loadingText="加载更多">\n      </ion-infinite-scroll-content>\n    </ion-infinite-scroll>\n\n</div>\n</ion-content>'/*ion-inline-end:"C:\Users\lenovo\Desktop\Timeline App\Timeline App-frontend\src\pages\home\home.html"*/,
             styles: ['./home.scss']
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_newsService__["a" /* newsService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_newsService__["a" /* newsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_newsService__["a" /* newsService */]) === "function" && _d || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map
