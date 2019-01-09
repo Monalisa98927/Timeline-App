@@ -12,6 +12,7 @@ export class AddNewsPage {
   
   userInfo;
   img : String;
+  content : String;
 
   constructor(public navCtrl: NavController,
             public navParams: NavParams,
@@ -41,7 +42,7 @@ export class AddNewsPage {
 
   addNews(image, content){
     
-    if(!content)
+    if((!content)&&(!image))
     {  
       this.showAlert1();
       return;
@@ -52,8 +53,15 @@ export class AddNewsPage {
     }else{
       this.img = image.replace("C:\\fakepath\\","");
     }
+
+    if(!content){
+      this.content = "";
+    }else{
+      this.content = content;
+    }
+
     var message = {
-        "content": content,
+        "content": this.content,
         "imageURL": this.img,
         "author": this.userInfo
     }

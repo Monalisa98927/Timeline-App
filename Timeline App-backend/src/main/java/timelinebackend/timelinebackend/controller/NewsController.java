@@ -33,13 +33,9 @@ public class NewsController {
 
     public void setList0(List<News> list0) { this.list0 = list0; }
 
-    public List<News> getList() {
-        return list;
-    }
+    public List<News> getList() { return list; }
 
-    public List<News> getList0() {
-        return list0;
-    }
+    public List<News> getList0() { return list0; }
 
     public NewsController() throws ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -70,13 +66,13 @@ public class NewsController {
 
         String str = JSON.toJSONString(getList0());
         return JSON.parseArray(str);
+
     }
 
     @PostMapping("newsList")
     @CrossOrigin(origins ="*")
     public JSONArray viewNewsList(@RequestParam("message") String message){
 
-        list0 = new ArrayList<>();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -102,21 +98,24 @@ public class NewsController {
         } catch (Exception e) { logger.info("err",e); }
         finally{
             try {
-                if(rs!=null){
-                    rs.close();
-                }
-                if(stmt!=null) {
-                    stmt.close();
-                }
-                if(conn!=null) {
-                    conn.close();
-                }
+                if(rs!=null){ rs.close(); }
+                if(stmt!=null) { stmt.close(); }
+                if(conn!=null) { conn.close(); }
+
             }catch (SQLException se1){ logger.info("err",se1); }
         }
 
-        for(int k=1;k<=3;k++){
-            getList0().add(getList().get(getList().size()-k));
+        this.setList0(new ArrayList<News>());
+        if(getList().size()>3){
+            for(int k=1;k<=3;k++){
+                getList0().add(getList().get(getList().size()-k));
+            }
+        }else {
+            for(int k=1;k<=getList().size();k++){
+                getList0().add(getList().get(getList().size()-k));
+            }
         }
+
         List<News> list1 = new ArrayList<>();
         if(!getList().isEmpty() && (getList().size() > 3)){
             for(int i=1; i<=3; i++){
@@ -124,7 +123,7 @@ public class NewsController {
                     list1.add(getList().get(getList().size()-i));
                 }
             }
-        }else if(!getList().isEmpty()){
+        }else if(!getList().isEmpty() && getList().size() <= 3){
             for(int i = 1; i<= getList().size(); i++){
                 if(list1.size()<3){
                     list1.add(getList().get(getList().size()-i));
@@ -145,7 +144,8 @@ public class NewsController {
         PreparedStatement pstmt = null;
         try{
             conn = getConnection();
-            String content = news.get("content").toString();
+            String content;
+            content = !Objects.equals(news.get("content").toString(),"") ? news.get("content").toString() : "";
 
             String imageURL;
             imageURL = !Objects.equals(news.get(imageUrl).toString(), "")
@@ -171,12 +171,8 @@ public class NewsController {
         } catch (Exception e) { logger.info("err",e); }
         finally{
             try{
-                if(conn!=null) {
-                    conn.close();
-                }
-                if(pstmt!=null) {
-                    pstmt.close();
-                }
+                if(conn!=null) { conn.close(); }
+                if(pstmt!=null) { pstmt.close(); }
             }catch(SQLException se){ logger.info("err",se); }
         }
         return true;

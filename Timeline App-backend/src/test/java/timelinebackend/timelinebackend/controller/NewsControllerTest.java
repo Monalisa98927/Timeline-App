@@ -70,7 +70,7 @@ public class NewsControllerTest {
     }
 
     @Test
-    public void view_3_news() throws Exception {
+    public void view_3_more_news() throws Exception {
 
         when(conn.createStatement()).thenReturn(stmt);
         when(stmt.executeQuery(anyString())).thenReturn(rs);
@@ -104,13 +104,13 @@ public class NewsControllerTest {
     }
 
     @Test
-    public void view_less_than_3_news() throws Exception {
+    public void view_less_than_3_more_news() throws Exception {
 
         when(conn.createStatement()).thenReturn(stmt);
         when(stmt.executeQuery(anyString())).thenReturn(rs);
         when(rs.next()).thenReturn(true);
 
-        List<News> list_size_3 = new ArrayList<>();
+        List<News> list_size_2 = new ArrayList<>();
         List<News> list_size_1 = new ArrayList<>();
 
         Date time = new Date();
@@ -119,14 +119,12 @@ public class NewsControllerTest {
 
         News n1 = new News(9,"aaa","assets/imgs/6.jpg","bbb",dateString);
         News n2 = new News(10,"aa","assets/imgs/7.jpg","bbb",dateString);
-        News n3 = new News(11,"a","assets/imgs/8.jpg","bbb",dateString);
 
-        list_size_3.add(n1);
-        list_size_3.add(n2);
-        list_size_3.add(n3);
+        list_size_2.add(n1);
+        list_size_2.add(n2);
         list_size_1.add(n1);
 
-        newsController.setList(list_size_3);
+        newsController.setList(list_size_2);
         newsController.setList0(list_size_1);
 
         JSONArray check = newsController.viewThreeMoreNews("");
@@ -134,7 +132,7 @@ public class NewsControllerTest {
     }
 
     @Test
-    public void view_more_news_list_equals_to_or_more_than_3() throws Exception {
+    public void view_news_list_of_3() throws Exception {
 
         when(conn.createStatement()).thenReturn(stmt);
         when(stmt.executeQuery(anyString())).thenReturn(rs);
@@ -174,14 +172,14 @@ public class NewsControllerTest {
     }
 
     @Test
-    public void view_more_news_list_less_than_3() throws Exception {
+    public void view_news_list_less_than_3() throws Exception {
 
         when(conn.createStatement()).thenReturn(stmt);
         when(stmt.executeQuery(anyString())).thenReturn(rs);
         when(rs.next()).thenReturn(true).thenReturn(false);
 
         List<News> list_size_2 = new ArrayList<>();
-        List<News> list_size_1 = new ArrayList<>();
+        //List<News> list_size_1 = new ArrayList<>();
 
         Date time = new Date();
         SimpleDateFormat format = new SimpleDateFormat("MM-dd  HH:mm");
@@ -192,10 +190,10 @@ public class NewsControllerTest {
 
         list_size_2.add(n1);
         list_size_2.add(n2);
-        list_size_1.add(n1);
+        //list_size_1.add(n1);
 
         newsController.setList(list_size_2);
-        newsController.setList0(list_size_1);
+        //newsController.setList0(list_size_1);
 
         when(rs.getInt("id")).thenReturn(9);
         when(rs.getString("content")).thenReturn("aaa");

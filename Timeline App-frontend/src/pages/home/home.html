@@ -43,17 +43,15 @@
               <h2 style="font-size:1.4rem; color:grey; font-weight:light;">{{news.time}}</h2>
           
               <ion-scroll style="margin-left: -13px;
-                                  margin-right: -19px;
-                                  padding:0px; 
-                                  white-space:normal; 
-                                  min-width:100%; 
-                                  margin-top:10px;
-                                  height:85px; 
-                                  margin-bottom:10px; 
-                                  color:#000000c2;" scrollX="true" scrollY="true">
-                {{news.content}}
-              </ion-scroll>
- 
+                margin-right: -19px;
+                padding:0px;
+                white-space:normal; 
+                min-width:100%; 
+                margin-top:10px;
+                height:85px; 
+                margin-bottom:10px; 
+                color:#000000c2;" scrollX="true" scrollY="true">{{news.content}}</ion-scroll>
+
               <img *ngIf="news.imageURL!=''" style="width: 100%; height: 100%" [src]="news.imageURL">
 
             <ion-row>
